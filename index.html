@@ -1,0 +1,1963 @@
+﻿<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LAST_2 — Anty Social Media Challenge | Ostatnia Prosta 2026</title>
+  <meta name="description" content="Odzyskujemy władzę nad czasem. 61 dni bezkompromisowego skupienia, odcięcia od cyfrowego szumu i domknięcia 2026 roku.">
+
+  <!-- Google Fonts: Press Start 2P (Pixel Headers), VT323 (Retro Terminal), JetBrains Mono (Tech), Inter (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+/* ==========================================================================
+   LAST_2 — ANTY SOCIAL MEDIA CHALLENGE (OSTATNIA PROSTA 2026)
+   Estetyka: Cyberpunk / Neo-Brutalist Pixel Art & Web3 (Wzorowana na Decentra)
+   Typografia nagłówków: Press Start 2P & VT323
+   Mikro-interakcje: Emil Kowalski Design Engineering
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. DESIGN TOKENS & RESET
+   -------------------------------------------------------------------------- */
+:root {
+  /* Kolory bazowe */
+  --bg-dark: #0A0A0A;
+  --bg-surface: #141414;
+  --bg-card: #1A1A1A;
+  --bg-card-hover: #222222;
+
+  /* High-Voltage Accent */
+  --accent-lime: #CCFF00;              /* Acid Neon Lime z referencji */
+  --accent-lime-dim: rgba(204, 255, 0, 0.12);
+  --accent-lime-glow: rgba(204, 255, 0, 0.45);
+  
+  /* Kolory tekstu */
+  --ink-pure: #FFFFFF;
+  --ink-secondary: #D1D1D1;
+  --ink-muted: #8E8E8E;
+  --ink-black: #0A0A0A;
+  
+  /* Ramki i separatory */
+  --border-dark: rgba(255, 255, 255, 0.14);
+  --border-lime: #CCFF00;
+
+  /* Typografia */
+  --font-pixel: 'Press Start 2P', monospace;
+  --font-terminal: 'VT323', monospace;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* Krzywe animacji (Emil Kowalski) */
+  --ease-emil: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-micro: 160ms;
+  --duration-ui: 240ms;
+
+  /* Siatka i odstępy */
+  --max-w: 1440px;
+  --pad-x: clamp(1.5rem, 5vw, 4.5rem);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  background-color: var(--bg-dark);
+  color: var(--ink-pure);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+body.cyber-dark {
+  font-family: var(--font-body);
+  background-color: var(--bg-dark);
+  color: var(--ink-pure);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Zaznaczenie tekstu w kolorze Acid Lime */
+::selection {
+  background-color: var(--accent-lime);
+  color: var(--ink-black);
+}
+
+/* Górny pasek postępu czytania */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background-color: var(--accent-lime);
+  box-shadow: 0 0 10px var(--accent-lime);
+  z-index: 9999;
+  transition: width 60ms linear;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--pad-x);
+  padding-right: var(--pad-x);
+}
+
+/* Klasy pomocnicze typografii */
+.pixel-font {
+  font-family: var(--font-pixel);
+  letter-spacing: -0.02em;
+}
+
+.mono-text {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.lime-text {
+  color: var(--accent-lime) !important;
+}
+
+.lime-border {
+  border-color: var(--accent-lime) !important;
+  color: var(--accent-lime) !important;
+}
+
+/* --------------------------------------------------------------------------
+   2. CYBER NAVIGATION BAR
+   -------------------------------------------------------------------------- */
+.cyber-nav {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: rgba(10, 10, 10, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-dark);
+  z-index: 500;
+}
+
+.nav-container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 1rem var(--pad-x);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.pixel-logo {
+  font-family: var(--font-pixel);
+  font-size: 1.1rem;
+  color: var(--accent-lime);
+  text-shadow: 0 0 8px rgba(204, 255, 0, 0.4);
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-lime);
+  box-shadow: 0 0 8px var(--accent-lime);
+  display: inline-block;
+  animation: pulse-live 1.8s ease-in-out infinite;
+}
+
+@keyframes pulse-live {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.8); }
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--ink-secondary);
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  transition: color var(--duration-micro) var(--ease-emil);
+}
+
+.nav-link:hover {
+  color: var(--accent-lime);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.nav-countdown {
+  color: var(--accent-lime);
+  font-size: 0.75rem;
+}
+
+/* --------------------------------------------------------------------------
+   3. CYBER BUTTONS (Emil Kowalski Tactile Touch)
+   -------------------------------------------------------------------------- */
+.btn-pixel-lime {
+  background-color: var(--accent-lime);
+  color: var(--ink-black);
+  border: 2px solid var(--accent-lime);
+  font-family: var(--font-pixel);
+  font-size: 0.78rem;
+  padding: 0.85rem 1.4rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.8);
+  transition: transform var(--duration-micro) var(--ease-emil),
+              box-shadow var(--duration-micro) var(--ease-emil),
+              background-color var(--duration-micro) var(--ease-emil);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-pixel-lime:active {
+  transform: translate(2px, 2px) scale(0.97);
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8);
+}
+
+.btn-nav {
+  padding: 0.55rem 1rem;
+  font-size: 0.7rem;
+}
+
+.btn-pixel-ghost {
+  background-color: transparent;
+  color: var(--ink-pure);
+  border: 1px solid var(--border-dark);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 0.85rem 1.4rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  transition: border-color var(--duration-micro) var(--ease-emil),
+              color var(--duration-micro) var(--ease-emil),
+              transform var(--duration-micro) var(--ease-emil);
+}
+
+.btn-pixel-ghost:hover {
+  border-color: var(--accent-lime);
+  color: var(--accent-lime);
+}
+
+.btn-pixel-ghost:active {
+  transform: scale(0.97);
+}
+
+.btn-pixel-black {
+  background-color: var(--ink-black);
+  color: var(--accent-lime);
+  border: 2px solid var(--ink-black);
+  font-family: var(--font-pixel);
+  font-size: 0.8rem;
+  padding: 1rem 1.6rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.25);
+  transition: transform var(--duration-micro) var(--ease-emil),
+              background-color var(--duration-micro) var(--ease-emil),
+              color var(--duration-micro) var(--ease-emil);
+}
+
+.btn-pixel-black:hover {
+  background-color: #1A1A1A;
+  color: #FFFFFF;
+}
+
+.btn-pixel-black:active {
+  transform: translate(2px, 2px) scale(0.97);
+}
+
+.btn-large {
+  padding: 1.25rem 2.2rem;
+  font-size: 0.92rem;
+}
+
+.btn-full {
+  width: 100%;
+  justify-content: center;
+  padding: 1.1rem;
+}
+
+/* --------------------------------------------------------------------------
+   4. SEKCJA 1: HERO
+   -------------------------------------------------------------------------- */
+.cyber-hero {
+  min-height: calc(100vh - 75px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: clamp(3rem, 7vw, 6rem);
+  padding-bottom: 2rem;
+  position: relative;
+}
+
+.hero-layout {
+  display: grid;
+  grid-template-columns: 1.35fr 0.85fr;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4.5rem);
+}
+
+.terminal-tag {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  color: var(--accent-lime);
+  margin-bottom: 1.5rem;
+}
+
+.hero-pixel-title {
+  font-family: var(--font-pixel);
+  font-size: clamp(1.8rem, 4.2vw, 3.8rem);
+  line-height: 1.25;
+  color: var(--ink-pure);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 2rem;
+}
+
+.title-row {
+  display: block;
+}
+
+.lime-glow-text {
+  color: var(--accent-lime);
+  text-shadow: 0 0 16px rgba(204, 255, 0, 0.45);
+}
+
+.hero-narrative-text {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--ink-secondary);
+  max-width: 52ch;
+  margin-bottom: 2.5rem;
+}
+
+.hero-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+/* Dithered Starburst Graphic (zrzut ekranu) */
+.hero-right-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dither-starburst {
+  width: 100%;
+  max-width: 380px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.starburst-svg {
+  width: 100%;
+  height: auto;
+  color: #FFFFFF;
+  animation: slow-orbit 36s linear infinite;
+}
+
+@keyframes slow-orbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.dither-caption {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1.25rem;
+  font-size: 0.72rem;
+  color: var(--ink-muted);
+}
+
+/* Protocol Badges Bar */
+.protocol-badges-bar {
+  margin-top: 4rem;
+  border-top: 1px solid var(--border-dark);
+  border-bottom: 1px solid var(--border-dark);
+  padding: 0.9rem 0;
+  background-color: rgba(16, 16, 16, 0.6);
+}
+
+.badges-inner {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--pad-x);
+}
+
+.badge-item {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.badge-icon {
+  color: var(--accent-lime);
+}
+
+/* --------------------------------------------------------------------------
+   5. SEKCJA 2: HIGH-VOLTAGE STATS (LIME SECTION)
+   Wzorowana bezpośrednio na żółtym bloku KEY STATS ze zrzutu ekranu!
+   -------------------------------------------------------------------------- */
+.section-voltage-stats {
+  background-color: var(--accent-lime);
+  color: var(--ink-black);
+  padding: clamp(4.5rem, 8vw, 8rem) 0;
+  position: relative;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.stats-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  align-items: center;
+  gap: clamp(2.5rem, 6vw, 5rem);
+}
+
+.stats-left-col .section-tag {
+  color: var(--ink-black);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.stats-heading {
+  font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+  line-height: 1.25;
+  color: var(--ink-black);
+  margin-bottom: 1.5rem;
+}
+
+.stats-subtext {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #1A1A1A;
+  max-width: 44ch;
+  margin-bottom: 2.25rem;
+}
+
+/* Stepped Pixel Silhouette Card (Czarne schodkowe okno jak w zrzucie ekranu) */
+.pixel-stepped-card-black {
+  background-color: var(--ink-black);
+  color: var(--ink-pure);
+  padding: clamp(2rem, 4vw, 3rem);
+  position: relative;
+  /* Schodkowe pikselowe wcięcia narożników (Pixel corners) */
+  clip-path: polygon(
+    0 20px, 10px 20px, 10px 10px, 20px 10px, 20px 0,
+    calc(100% - 20px) 0, calc(100% - 20px) 10px, calc(100% - 10px) 10px, calc(100% - 10px) 20px, 100% 20px,
+    100% calc(100% - 20px), calc(100% - 10px) calc(100% - 20px), calc(100% - 10px) calc(100% - 10px), calc(100% - 20px) calc(100% - 10px), calc(100% - 20px) 100%,
+    20px 100%, 20px calc(100% - 10px), 10px calc(100% - 10px), 10px calc(100% - 20px), 0 calc(100% - 20px)
+  );
+  box-shadow: 12px 12px 0px rgba(0, 0, 0, 0.4);
+}
+
+.pixel-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding-bottom: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.terminal-badge {
+  color: var(--accent-lime);
+  font-size: 0.72rem;
+}
+
+.live-pulse-dot {
+  width: 7px;
+  height: 7px;
+  background-color: var(--accent-lime);
+  border-radius: 50%;
+  animation: pulse-live 1.5s infinite;
+}
+
+.metric-block {
+  margin-bottom: 2rem;
+}
+
+.metric-number-huge {
+  font-size: clamp(2.4rem, 4.8vw, 4.2rem);
+  color: var(--accent-lime);
+  line-height: 1.1;
+  margin-bottom: 0.75rem;
+}
+
+.metric-label {
+  color: var(--ink-secondary);
+  font-size: 0.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.metric-explanation {
+  font-size: 0.98rem;
+  color: var(--ink-muted);
+  line-height: 1.5;
+}
+
+.metric-divider-pixel {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.12);
+  margin: 1.75rem 0;
+}
+
+.metric-sub-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.metric-sub-val {
+  font-size: clamp(1.1rem, 1.8vw, 1.6rem);
+  color: var(--ink-pure);
+  margin-bottom: 0.4rem;
+}
+
+.metric-sub-label {
+  font-size: 0.72rem;
+  color: var(--accent-lime);
+  margin-bottom: 0.5rem;
+}
+
+.metric-sub-desc {
+  font-size: 0.88rem;
+  color: var(--ink-muted);
+  line-height: 1.45;
+}
+
+/* --------------------------------------------------------------------------
+   6. SEKCJA 2.5: PROTOKÓŁ ZASAD (KODEKS)
+   -------------------------------------------------------------------------- */
+.section-protocol {
+  padding: clamp(5rem, 9vw, 8rem) 0;
+  border-top: 1px solid var(--border-dark);
+}
+
+.protocol-header-wrap {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.section-tag {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent-lime);
+  margin-bottom: 0.75rem;
+}
+
+.protocol-title {
+  font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+  color: var(--ink-pure);
+}
+
+.protocol-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.protocol-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-dark);
+  padding: 2.25rem;
+  position: relative;
+  transition: transform var(--duration-ui) var(--ease-emil),
+              border-color var(--duration-ui) var(--ease-emil);
+}
+
+.protocol-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-lime);
+}
+
+.protocol-card.highlight-lime {
+  border-color: var(--accent-lime);
+  background-color: rgba(204, 255, 0, 0.04);
+}
+
+.protocol-card-num {
+  font-size: 1.1rem;
+  color: var(--accent-lime);
+  margin-bottom: 1rem;
+}
+
+.protocol-card-title {
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: var(--ink-pure);
+  margin-bottom: 1rem;
+}
+
+.protocol-card-desc {
+  font-size: 1rem;
+  color: var(--ink-secondary);
+  line-height: 1.55;
+  margin-bottom: 1.5rem;
+}
+
+.card-status-bar {
+  font-size: 0.72rem;
+  color: var(--ink-muted);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 0.75rem;
+}
+
+/* --------------------------------------------------------------------------
+   7. SEKCJA 3: OŚ CZASU (PIXEL PROCESS STEPS)
+   Wzorowane 1:1 na bąblach schodkowych ze zrzutu ekranu (Step 1, Step 2, Step 3)
+   -------------------------------------------------------------------------- */
+.section-process {
+  padding: clamp(5rem, 9vw, 8rem) 0;
+  border-top: 1px solid var(--border-dark);
+  position: relative;
+}
+
+.process-header {
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+.process-main-title {
+  font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+  color: var(--ink-pure);
+}
+
+.process-steps-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* Bazowy bąbel schodkowy */
+.pixel-process-step {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 2rem;
+  padding: clamp(2.2rem, 4vw, 3.5rem);
+  position: relative;
+  outline: none;
+  /* Schodkowe pikselowe rogi i wycięcia */
+  clip-path: polygon(
+    0 24px, 12px 24px, 12px 12px, 24px 12px, 24px 0,
+    calc(100% - 24px) 0, calc(100% - 24px) 12px, calc(100% - 12px) 12px, calc(100% - 12px) 24px, 100% 24px,
+    100% calc(100% - 24px), calc(100% - 12px) calc(100% - 24px), calc(100% - 12px) calc(100% - 12px), calc(100% - 24px) calc(100% - 12px), calc(100% - 24px) 100%,
+    24px 100%, 24px calc(100% - 12px), 12px calc(100% - 12px), 12px calc(100% - 24px), 0 calc(100% - 24px)
+  );
+  transition: transform var(--duration-ui) var(--ease-emil),
+              box-shadow var(--duration-ui) var(--ease-emil);
+}
+
+.pixel-process-step:hover {
+  transform: translateY(-4px);
+}
+
+.pixel-process-step:active {
+  transform: scale(0.99);
+}
+
+/* Krok 1: Acid Lime */
+.step-lime {
+  background-color: var(--accent-lime);
+  color: var(--ink-black);
+  box-shadow: 0 10px 30px rgba(204, 255, 0, 0.2);
+}
+
+.step-lime .step-number {
+  color: var(--ink-black);
+}
+
+.step-lime .step-title {
+  color: var(--ink-black);
+}
+
+.step-lime .step-desc {
+  color: #1A1A1A;
+}
+
+.step-lime .step-footer {
+  color: #333333;
+  border-top-color: rgba(0, 0, 0, 0.15);
+}
+
+/* Krok 2: Czysta biel */
+.step-white {
+  background-color: #FFFFFF;
+  color: var(--ink-black);
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+}
+
+.step-white .step-number {
+  color: var(--ink-black);
+}
+
+.step-white .step-title {
+  color: var(--ink-black);
+}
+
+.step-white .step-desc {
+  color: #222222;
+}
+
+.step-white .step-footer {
+  color: #444444;
+  border-top-color: rgba(0, 0, 0, 0.15);
+}
+
+/* Krok 3: Ciemny grafit / Cyber Black */
+.step-dark {
+  background-color: #161616;
+  color: var(--ink-pure);
+  border: 1px solid var(--border-dark);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.step-dark .step-title {
+  color: var(--ink-pure);
+}
+
+.step-dark .step-desc {
+  color: var(--ink-secondary);
+}
+
+.step-dark .step-footer {
+  color: var(--ink-muted);
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Wnętrze kroków */
+.step-meta {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.step-number {
+  font-size: 0.95rem;
+}
+
+.step-timeline-badge {
+  font-size: 0.72rem;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid currentColor;
+}
+
+.step-title {
+  font-size: clamp(1.2rem, 2.2vw, 1.85rem);
+  line-height: 1.35;
+  margin-bottom: 1rem;
+}
+
+.step-desc {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 62ch;
+  margin-bottom: 1.5rem;
+}
+
+.step-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid;
+  padding-top: 0.85rem;
+  font-size: 0.75rem;
+}
+
+.step-isometric-icon {
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.iso-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   8. SEKCJA 4: FINAŁ / CTA BANNER (LIME BANNER)
+   -------------------------------------------------------------------------- */
+.section-final-cyber {
+  padding: clamp(5rem, 9vw, 8.5rem) 0;
+  border-top: 1px solid var(--border-dark);
+}
+
+.final-banner-pixel {
+  background-color: var(--accent-lime);
+  color: var(--ink-black);
+  padding: clamp(3rem, 6vw, 5.5rem) clamp(2rem, 5vw, 4.5rem);
+  text-align: center;
+  position: relative;
+  /* Schodkowy baner */
+  clip-path: polygon(
+    0 24px, 12px 24px, 12px 12px, 24px 12px, 24px 0,
+    calc(100% - 24px) 0, calc(100% - 24px) 12px, calc(100% - 12px) 12px, calc(100% - 12px) 24px, 100% 24px,
+    100% calc(100% - 24px), calc(100% - 12px) calc(100% - 24px), calc(100% - 12px) calc(100% - 12px), calc(100% - 24px) calc(100% - 12px), calc(100% - 24px) 100%,
+    24px 100%, 24px calc(100% - 12px), 12px calc(100% - 12px), 12px calc(100% - 24px), 0 calc(100% - 24px)
+  );
+  box-shadow: 0 20px 50px rgba(204, 255, 0, 0.25);
+}
+
+.final-meta-tag {
+  color: var(--ink-black);
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+}
+
+.final-pixel-title {
+  font-size: clamp(2rem, 5.5vw, 4.5rem);
+  line-height: 1.2;
+  color: var(--ink-black);
+  margin-bottom: 1.5rem;
+}
+
+.final-pixel-desc {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: #1A1A1A;
+  max-width: 50ch;
+  margin: 0 auto 2.5rem auto;
+}
+
+.final-cta-btn-wrap {
+  margin-bottom: 2.25rem;
+}
+
+.final-stats-terminal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  color: #333333;
+  flex-wrap: wrap;
+}
+
+.term-sep {
+  opacity: 0.5;
+}
+
+/* --------------------------------------------------------------------------
+   9. CYBER FOOTER
+   -------------------------------------------------------------------------- */
+.cyber-footer {
+  border-top: 1px solid var(--border-dark);
+  padding: 1.75rem 0;
+  background-color: var(--bg-dark);
+}
+
+.footer-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-left, .footer-right {
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+}
+
+/* --------------------------------------------------------------------------
+   10. INTERACTIVE TERMINAL JOIN MODAL
+   -------------------------------------------------------------------------- */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 280ms var(--ease-emil);
+}
+
+.modal-backdrop.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-terminal-surface {
+  background-color: var(--bg-surface);
+  border: 2px solid var(--accent-lime);
+  width: 100%;
+  max-width: 620px;
+  box-shadow: 0 0 30px rgba(204, 255, 0, 0.2), 10px 10px 0px rgba(0, 0, 0, 0.9);
+  transform: scale(0.95);
+  opacity: 0;
+  transition: transform 320ms var(--ease-emil),
+              opacity 240ms var(--ease-emil);
+}
+
+.modal-backdrop.is-open .modal-terminal-surface {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.terminal-bar {
+  background-color: #1E1E1E;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.terminal-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.t-btn {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.t-close { background-color: #FF5F56; }
+.t-min { background-color: #FFBD2E; }
+.t-max { background-color: #27C93F; }
+
+.terminal-title {
+  color: var(--accent-lime);
+  font-size: 0.75rem;
+}
+
+.modal-close-pixel {
+  background: none;
+  border: none;
+  color: var(--ink-muted);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: color var(--duration-micro) var(--ease-emil);
+}
+
+.modal-close-pixel:hover {
+  color: var(--accent-lime);
+}
+
+.terminal-body {
+  padding: clamp(1.75rem, 3.5vw, 2.5rem);
+}
+
+.modal-pixel-heading {
+  font-size: 1.2rem;
+  color: var(--accent-lime);
+  line-height: 1.35;
+  margin-bottom: 1rem;
+}
+
+.modal-terminal-desc {
+  font-size: 0.98rem;
+  color: var(--ink-secondary);
+  line-height: 1.55;
+  margin-bottom: 2rem;
+}
+
+.terminal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.terminal-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pixel-input {
+  width: 100%;
+  background-color: #0E0E0E;
+  border: 1px solid var(--border-dark);
+  color: var(--accent-lime);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  padding: 0.9rem 1.1rem;
+  outline: none;
+  transition: border-color var(--duration-micro) var(--ease-emil);
+}
+
+.pixel-input:focus {
+  border-color: var(--accent-lime);
+  box-shadow: 0 0 10px rgba(204, 255, 0, 0.25);
+}
+
+.pixel-checkbox-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+
+.pixel-checkbox-wrap input[type="checkbox"] {
+  display: none;
+}
+
+.pixel-check-box {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--accent-lime);
+  background-color: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pixel-checkbox-wrap input[type="checkbox"]:checked + .pixel-check-box {
+  background-color: var(--accent-lime);
+}
+
+.pixel-checkbox-wrap input[type="checkbox"]:checked + .pixel-check-box::after {
+  content: '■';
+  color: #0A0A0A;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.terminal-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  color: var(--ink-muted);
+  font-size: 0.72rem;
+}
+
+/* --------------------------------------------------------------------------
+   11. SONNER-STYLE TOAST (CYBER THEME)
+   -------------------------------------------------------------------------- */
+.toast-portal {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.sonner-toast {
+  pointer-events: auto;
+  background-color: #141414;
+  border: 2px solid var(--accent-lime);
+  color: #FFFFFF;
+  padding: 1.1rem 1.4rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 15px rgba(204, 255, 0, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  max-width: 420px;
+  transform: translateY(100%);
+  opacity: 0;
+  filter: blur(2px);
+  transition: transform 380ms var(--ease-emil),
+              opacity 300ms var(--ease-emil),
+              filter 300ms var(--ease-emil);
+}
+
+.sonner-toast.toast-enter-active {
+  transform: translateY(0);
+  opacity: 1;
+  filter: blur(0);
+}
+
+.sonner-toast.toast-exit {
+  transform: translateY(14px);
+  opacity: 0;
+  filter: blur(2px);
+}
+
+.toast-dot {
+  width: 10px;
+  height: 10px;
+  background-color: var(--accent-lime);
+  box-shadow: 0 0 8px var(--accent-lime);
+  flex-shrink: 0;
+}
+
+.toast-title {
+  font-family: var(--font-pixel);
+  font-size: 0.75rem;
+  color: var(--accent-lime);
+  margin-bottom: 0.35rem;
+}
+
+.toast-msg {
+  font-size: 0.85rem;
+  color: var(--ink-secondary);
+  line-height: 1.4;
+}
+
+/* --------------------------------------------------------------------------
+   12. ANIMACJE I SCROLL REVEAL (Emil Kowalski)
+   -------------------------------------------------------------------------- */
+.anim-stagger {
+  opacity: 0;
+  transform: translateY(16px);
+  filter: blur(4px);
+  animation: heroEnter 600ms var(--ease-emil) forwards;
+  animation-delay: calc(var(--stagger-idx) * 70ms + 100ms);
+}
+
+@keyframes heroEnter {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.reveal-item {
+  opacity: 0;
+  transform: translateY(24px);
+  filter: blur(4px);
+  transition: opacity 600ms var(--ease-emil),
+              transform 600ms var(--ease-emil),
+              filter 600ms var(--ease-emil);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal-item.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* --------------------------------------------------------------------------
+   13. RESPONSYWNOŚĆ
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .hero-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-right-col {
+    order: -1;
+    margin-bottom: 1rem;
+  }
+
+  .stats-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .protocol-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pixel-process-step {
+    grid-template-columns: 1fr;
+  }
+
+  .step-isometric-icon {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --pad-x: 1.25rem;
+  }
+
+  .nav-links, .nav-countdown {
+    display: none;
+  }
+
+  .protocol-badges-bar .badge-item {
+    font-size: 0.68rem;
+  }
+
+  .metric-sub-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .toast-portal {
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   14. PREFERS-REDUCED-MOTION
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .anim-stagger, .reveal-item {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .starburst-svg {
+    animation: none;
+  }
+}
+
+</style>
+</head>
+<body class="cyber-dark">
+
+  <!-- Top Scroll Reading Progress Line (Acid Lime) -->
+  <div class="scroll-progress-bar" id="scroll-progress-bar" aria-hidden="true"></div>
+
+  <!-- Cyberpunk Top Navigation Bar -->
+  <header class="cyber-nav">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <span class="pixel-logo">LAST_2</span>
+        <span class="live-dot" aria-hidden="true"></span>
+      </div>
+
+      <nav class="nav-links" aria-label="Nawigacja">
+        <a href="#manifest" class="nav-link">[ STATYSTYKI ]</a>
+        <a href="#protocol" class="nav-link">[ KODEKS ]</a>
+        <a href="#timeline" class="nav-link">[ OŚ CZASU ]</a>
+      </nav>
+
+      <div class="nav-actions">
+        <span class="nav-countdown mono-text" id="nav-countdown">START: 01.11 // 61 DNI</span>
+        <button type="button" class="btn-pixel-lime btn-nav" id="open-join-nav">
+          <span class="btn-pixel-text">DOŁĄCZ TERAZ</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==================== SEKCJA 1: HERO (CYBER DARK) ==================== -->
+    <section class="cyber-hero" id="hero">
+      <div class="container hero-layout">
+        
+        <div class="hero-left-col">
+          <!-- Terminal Tagline -->
+          <div class="terminal-tag anim-stagger" style="--stagger-idx: 0;">
+            <span class="tag-bracket">[</span>
+            <span class="tag-text">CHAPTER: LAST_2 // ANTY SOCIAL MEDIA CHALLENGE — 61 DNI</span>
+            <span class="tag-bracket">]</span>
+          </div>
+
+          <!-- Giant Pixel Display Typography -->
+          <div class="hero-title-wrap">
+            <h1 class="hero-pixel-title" aria-label="Odzyskujemy władzę nad czasem.">
+              <span class="title-row anim-stagger" style="--stagger-idx: 1;">ODZYSKUJEMY</span>
+              <span class="title-row anim-stagger" style="--stagger-idx: 2;">WŁADZĘ NAD</span>
+              <span class="title-row anim-stagger lime-glow-text" style="--stagger-idx: 3;">CZASEM.</span>
+            </h1>
+          </div>
+
+          <!-- Narrative description -->
+          <p class="hero-narrative-text anim-stagger" style="--stagger-idx: 4;">
+            Ostatnie dwa miesiące. Odcinamy cyfrowy szum, zamykamy pętle dopaminowe i w 61 dni maksymalizujemy 2026 rok. To jest ostatnia prosta — czysta egzekucja zamiast kolejnego scrollowania.
+          </p>
+
+          <!-- Action Buttons Stack -->
+          <div class="hero-cta-group anim-stagger" style="--stagger-idx: 5;">
+            <button type="button" class="btn-pixel-lime" id="open-join-btn">
+              <span class="btn-pixel-text">DOŁĄCZ DO „LAST_2”</span>
+              <span class="btn-pixel-arrow" aria-hidden="true">↗</span>
+            </button>
+
+            <a href="#timeline" class="btn-pixel-ghost">
+              <span class="btn-pixel-text">ZOBACZ OŚ CZASU</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Dithered Pixel Graphic (As in reference image) -->
+        <div class="hero-right-col anim-stagger" style="--stagger-idx: 3;">
+          <div class="dither-starburst" aria-hidden="true">
+            <svg class="starburst-svg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Pixelated 8-arm Dither Rosette Motif -->
+              <g class="starburst-rays">
+                <!-- North Ray -->
+                <rect x="188" y="20" width="24" height="120" fill="currentColor" fill-opacity="0.9" />
+                <rect x="180" y="40" width="8" height="80" fill="currentColor" fill-opacity="0.5" />
+                <rect x="212" y="40" width="8" height="80" fill="currentColor" fill-opacity="0.5" />
+                <!-- South Ray -->
+                <rect x="188" y="260" width="24" height="120" fill="currentColor" fill-opacity="0.9" />
+                <rect x="180" y="280" width="8" height="80" fill="currentColor" fill-opacity="0.5" />
+                <rect x="212" y="280" width="8" height="80" fill="currentColor" fill-opacity="0.5" />
+                <!-- West Ray -->
+                <rect x="20" y="188" width="120" height="24" fill="currentColor" fill-opacity="0.9" />
+                <rect x="40" y="180" width="80" height="8" fill="currentColor" fill-opacity="0.5" />
+                <rect x="40" y="212" width="80" height="8" fill="currentColor" fill-opacity="0.5" />
+                <!-- East Ray -->
+                <rect x="260" y="188" width="120" height="24" fill="currentColor" fill-opacity="0.9" />
+                <rect x="280" y="180" width="80" height="8" fill="currentColor" fill-opacity="0.5" />
+                <rect x="280" y="212" width="80" height="8" fill="currentColor" fill-opacity="0.5" />
+                <!-- Diagonal NW -->
+                <rect x="80" y="80" width="70" height="20" transform="rotate(45 80 80)" fill="currentColor" fill-opacity="0.8" />
+                <!-- Diagonal NE -->
+                <rect x="280" y="80" width="70" height="20" transform="rotate(45 280 80)" fill="currentColor" fill-opacity="0.8" />
+                <!-- Diagonal SW -->
+                <rect x="80" y="280" width="70" height="20" transform="rotate(45 80 280)" fill="currentColor" fill-opacity="0.8" />
+                <!-- Diagonal SE -->
+                <rect x="280" y="280" width="70" height="20" transform="rotate(45 280 280)" fill="currentColor" fill-opacity="0.8" />
+                <!-- Center Core -->
+                <rect x="176" y="176" width="48" height="48" fill="#CCFF00" />
+                <rect x="160" y="160" width="80" height="80" stroke="#CCFF00" stroke-width="4" stroke-dasharray="8 8" />
+              </g>
+            </svg>
+            <div class="dither-caption mono-text">
+              <span>SECURITY_LAYER: 01.11.2026</span>
+              <span>PROTOCOL: ACTIVE</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Trust / Protocol Badges Ticker -->
+      <div class="protocol-badges-bar">
+        <div class="badges-inner">
+          <span class="badge-item"><span class="badge-icon">◆</span> 61 DNI DOWOŻENIA CELÓW</span>
+          <span class="badge-item"><span class="badge-icon">◆</span> ZERO SOCIAL MEDIÓW NA TELEFONIE</span>
+          <span class="badge-item"><span class="badge-icon">◆</span> 20 MIN BUFOR DESKTOP PO 20:00</span>
+          <span class="badge-item"><span class="badge-icon">◆</span> FUNDAMENTY POD PROJECT27</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SEKCJA 2: HIGH-VOLTAGE STATS (LIME SECTION) ==================== -->
+    <section class="section-voltage-stats" id="manifest">
+      <div class="container stats-layout">
+        
+        <div class="stats-left-col reveal-item">
+          <div class="section-tag mono-text">[1] KEY STATS</div>
+          <h2 class="stats-heading pixel-font">WYZWANIE W LICZBACH</h2>
+          <p class="stats-subtext">
+            Ostatnie 61 dni roku 2026. Radykalna redukcja rozproszeń, bezwzględna blokada dopaminowych aplikacji w smartfonie i 100% koncentracji na dowiezieniu rocznych priorytetów.
+          </p>
+
+          <div class="stats-actions">
+            <a href="#protocol" class="btn-pixel-black">
+              <span class="btn-pixel-text">CZYTAJ KODEKS</span>
+              <span class="btn-pixel-arrow">↓</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="stats-right-col reveal-item" style="--reveal-delay: 150ms;">
+          <!-- Stepped Pixel Silhouette Card (As in the Decentra screenshot) -->
+          <div class="pixel-stepped-card-black">
+            <div class="pixel-card-header">
+              <span class="terminal-badge mono-text">TELEMETRY_METRICS</span>
+              <span class="live-pulse-dot"></span>
+            </div>
+
+            <!-- Dynamic Metrics Ticker -->
+            <div class="metric-block" data-counter="61" data-suffix=" DNI">
+              <div class="metric-number-huge pixel-font counter-display">61 DNI</div>
+              <div class="metric-label mono-text">CZAS TRWANIA // DURATION</div>
+              <p class="metric-explanation">
+                Czystego skupienia bez rozpraszaczy. Dokładnie tyle dzieli 1 listopada od nadejścia nowego roku.
+              </p>
+            </div>
+
+            <div class="metric-divider-pixel"></div>
+
+            <div class="metric-sub-grid">
+              <div class="metric-sub-item" data-counter="0" data-suffix="% SZUMU">
+                <div class="metric-sub-val pixel-font counter-display">0% SZUMU</div>
+                <div class="metric-sub-label mono-text">NOISE ZERO</div>
+                <p class="metric-sub-desc">
+                  Zero social mediów na smartfonie. Wyłącznie 20-minutowy bufor na komputerze po 20:00.
+                </p>
+              </div>
+
+              <div class="metric-sub-item" data-counter="100" data-suffix="% EGZEKUCJI">
+                <div class="metric-sub-val pixel-font counter-display">100% EGZEKUCJI</div>
+                <div class="metric-sub-label mono-text">EXECUTION STANDARD</div>
+                <p class="metric-sub-desc">
+                  Systematyczna praca nad celami i domknięcie roku 2026 z żelazną dyscypliną.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== SEKCJA 2.5: PROTOKÓŁ ZASAD (KODEKS) ==================== -->
+    <section class="section-protocol" id="protocol">
+      <div class="container">
+        
+        <div class="protocol-header-wrap reveal-item">
+          <div class="section-tag mono-text">[2] PROTOKÓŁ WYKONAWCZY</div>
+          <h2 class="protocol-title pixel-font">KODEKS OSTATNIEJ PROSTEJ</h2>
+        </div>
+
+        <div class="protocol-grid">
+          
+          <div class="protocol-card reveal-item" style="--reveal-delay: 50ms;">
+            <div class="protocol-card-num pixel-font">[01]</div>
+            <h3 class="protocol-card-title pixel-font">BEZWZGLĘDNA BLOKADA NA TELEFONIE</h3>
+            <p class="protocol-card-desc">
+              Całkowity zakaz korzystania z aplikacji social media na smartfonie. Zero odruchowego sięgania po telefon i zero bezwiednego scrollowania w ciągu dnia.
+            </p>
+            <div class="card-status-bar mono-text">STATUS: ZABLOKOWANE</div>
+          </div>
+
+          <div class="protocol-card highlight-lime reveal-item" style="--reveal-delay: 120ms;">
+            <div class="protocol-card-num pixel-font">[02]</div>
+            <h3 class="protocol-card-title pixel-font">OKNO PO 20:00: KOMPUTER (MAX. 20 MIN)</h3>
+            <p class="protocol-card-desc">
+              Social media dozwolone są wyłącznie na komputerze i jedynie po godzinie 20:00. Obowiązuje ścisły, 20-minutowy bufor bezpieczeństwa jako kontrolowana higiena informacyjna.
+            </p>
+            <div class="card-status-bar mono-text">REGUŁA: DESKTOP ONLY</div>
+          </div>
+
+          <div class="protocol-card reveal-item" style="--reveal-delay: 190ms;">
+            <div class="protocol-card-num pixel-font">[03]</div>
+            <h3 class="protocol-card-title pixel-font">SYSTEMATYCZNA PRACA NAD CELAMI</h3>
+            <p class="protocol-card-desc">
+              Codzienna, nieprzerwana egzekucja wyznaczonych priorytetów. Każdy dzień traktowany jest jak domknięta jednostka operacyjna — systematycznie finalizujemy kluczowe zadania na 2026 rok.
+            </p>
+            <div class="card-status-bar mono-text">STANDARD: DOMKNIĘCIE 2026</div>
+          </div>
+
+          <div class="protocol-card reveal-item" style="--reveal-delay: 260ms;">
+            <div class="protocol-card-num pixel-font">[04]</div>
+            <h3 class="protocol-card-title pixel-font">ASYNC I ANALOGOWY WIECZÓR</h3>
+            <p class="protocol-card-desc">
+              Skrzynka pocztowa i wiadomości sprawdzane maksymalnie 2 razy dziennie w wyznaczonych oknach. Po godzinie 21:00 ekrany gasną — regeneracja przed kolejnym dniem egzekucji.
+            </p>
+            <div class="card-status-bar mono-text">TRYB: 21:00 OFFLINE</div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== SEKCJA 3: OŚ CZASU (PIXEL PROCESS STEPS) ==================== -->
+    <!-- Wzorowane bezpośrednio na kartach PROCESS STEP z załączonego zrzutu ekranu:
+         Karta 1: Acid Lime pixel bubble
+         Karta 2: White pixel bubble
+         Karta 3: Dark pixel bubble -->
+    <section class="section-process" id="timeline">
+      <div class="container process-layout">
+        
+        <div class="process-header reveal-item">
+          <div class="section-tag mono-text">[3] OŚ CZASU</div>
+          <h2 class="process-main-title pixel-font">ARCHITEKTURA OSTATNIEJ PROSTEJ</h2>
+        </div>
+
+        <div class="process-steps-stack">
+          
+          <!-- PROCESS STEP #1: LIME PIXEL BUBBLE -->
+          <article class="pixel-process-step step-lime reveal-item" style="--reveal-delay: 50ms;" tabindex="0">
+            <div class="step-content">
+              <div class="step-meta mono-text">
+                <span class="step-number pixel-font">PROCESS STEP #1</span>
+                <span class="step-timeline-badge">01 LISTOPADA — 01 STYCZNIA 2027</span>
+              </div>
+              <h3 class="step-title pixel-font">PRACA: LISTOPAD – STYCZEŃ (61 DNI)</h3>
+              <p class="step-desc">
+                61 dni bezkompromisowej pracy. Odcięcie rozpraszaczy na telefonie, odzyskanie pełnej władzy nad własnym czasem i systematyczne dowożenie kluczowych celów przed końcem roku. Działamy z żelazną dyscypliną, weryfikując postępy każdego tygodnia.
+              </p>
+              <div class="step-footer mono-text">
+                <span>FAZA 01 // CORE EXECUTION</span>
+                <span>STATUS: GOTOWY DO STARTU</span>
+              </div>
+            </div>
+
+            <!-- Isometric 3D Wireframe Cube (Pixel Style) -->
+            <div class="step-isometric-icon" aria-hidden="true">
+              <svg viewBox="0 0 100 100" class="iso-svg">
+                <polygon points="50,15 85,35 50,55 15,35" fill="none" stroke="#0A0A0A" stroke-width="4" />
+                <polygon points="15,35 50,55 50,90 15,70" fill="#0A0A0A" fill-opacity="0.15" stroke="#0A0A0A" stroke-width="4" />
+                <polygon points="50,55 85,35 85,70 50,90" fill="#0A0A0A" fill-opacity="0.3" stroke="#0A0A0A" stroke-width="4" />
+              </svg>
+            </div>
+          </article>
+
+          <!-- PROCESS STEP #2: WHITE PIXEL BUBBLE -->
+          <article class="pixel-process-step step-white reveal-item" style="--reveal-delay: 150ms;" tabindex="0">
+            <div class="step-content">
+              <div class="step-meta mono-text">
+                <span class="step-number pixel-font">PROCESS STEP #2</span>
+                <span class="step-timeline-badge">18 GRUDNIA — 01 STYCZNIA 2027</span>
+              </div>
+              <h3 class="step-title pixel-font">WIZJA: OSTATNIE 2 TYGODNIE GRUDNIA</h3>
+              <p class="step-desc">
+                Kreacja wizji i architektury na 2027 rok. Równolegle z dowożeniem roku budujemy fundamenty pod nowy rozdział: <strong>„PROJECT27”</strong>. Podsumowanie metryk, kalibracja kierunku i projektowanie systemów o wysokiej dźwigni.
+              </p>
+              <div class="step-footer mono-text">
+                <span>FAZA 02 // STRATEGY & VISION</span>
+                <span>CEL: ARCHITEKTURA PROJECT27</span>
+              </div>
+            </div>
+
+            <!-- Isometric 3D Starburst Icon -->
+            <div class="step-isometric-icon" aria-hidden="true">
+              <svg viewBox="0 0 100 100" class="iso-svg">
+                <polygon points="50,10 62,38 90,50 62,62 50,90 38,62 10,50 38,38" fill="none" stroke="#0A0A0A" stroke-width="4" />
+                <circle cx="50" cy="50" r="12" fill="#0A0A0A" />
+              </svg>
+            </div>
+          </article>
+
+          <!-- PROCESS STEP #3: DARK GRAPHITE PIXEL BUBBLE -->
+          <article class="pixel-process-step step-dark reveal-item" style="--reveal-delay: 250ms;" tabindex="0">
+            <div class="step-content">
+              <div class="step-meta mono-text">
+                <span class="step-number pixel-font lime-text">PROCESS STEP #3</span>
+                <span class="step-timeline-badge lime-border">NOWY STANDARD 2027</span>
+              </div>
+              <h3 class="step-title pixel-font">PRZEJŚCIE DO „PROJECT27”</h3>
+              <p class="step-desc">
+                Zwycięstwo na ostatniej prostej. Wchodzisz w 2027 rok z czystym umysłem, odzyskaną dyscypliną i działającym nawykiem systematycznej pracy, zamiast bezwiednego marnowania godzin na ekranie telefonu.
+              </p>
+              <div class="step-footer mono-text">
+                <span>FAZA 03 // NEW IDENTITY</span>
+                <span>WYNIK: 100% EGZEKUCJI</span>
+              </div>
+            </div>
+
+            <!-- Isometric 3D Crystal / Monolith Icon -->
+            <div class="step-isometric-icon" aria-hidden="true">
+              <svg viewBox="0 0 100 100" class="iso-svg">
+                <polygon points="50,10 80,30 50,50 20,30" fill="none" stroke="#CCFF00" stroke-width="4" />
+                <polygon points="20,30 50,50 50,90 20,70" fill="#CCFF00" fill-opacity="0.15" stroke="#CCFF00" stroke-width="4" />
+                <polygon points="50,50 80,30 80,70 50,90" fill="#CCFF00" fill-opacity="0.3" stroke="#CCFF00" stroke-width="4" />
+              </svg>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== SEKCJA 4: FINAL CTA (LIME VOLTAGE BANNER) ==================== -->
+    <section class="section-final-cyber" id="final-cta">
+      <div class="container final-cyber-container reveal-item">
+        
+        <div class="final-banner-pixel">
+          <div class="final-meta-tag mono-text">[ FAZA DECYZJI // COMMITMENT ]</div>
+          <h2 class="final-pixel-title pixel-font">WCHODZISZ W TO?</h2>
+          
+          <p class="final-pixel-desc">
+            Ostatnia prosta do <strong>PROJECT27</strong>. Odzyskaj 120+ godzin marnowanych na mimowolne scrollowanie i zamień je w realne rezultaty. Widzimy się po drugiej stronie.
+          </p>
+
+          <div class="final-cta-btn-wrap">
+            <button type="button" class="btn-pixel-black btn-large" id="final-join-btn">
+              <span class="btn-pixel-text">DOŁĄCZ JUŻ TERAZ DO „LAST_2”</span>
+              <span class="btn-pixel-arrow">↗</span>
+            </button>
+          </div>
+
+          <div class="final-stats-terminal mono-text">
+            <span>START: 01.11.2026 // 00:00</span>
+            <span class="term-sep">/</span>
+            <span>MIEJSCA LIMITOWANE</span>
+            <span class="term-sep">/</span>
+            <span>ZERO SZUMU</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Editorial Pixel Footer -->
+  <footer class="cyber-footer">
+    <div class="container footer-flex">
+      <div class="footer-left mono-text">
+        <span>LAST_2 // ANTY SOCIAL MEDIA CHALLENGE</span>
+      </div>
+      <div class="footer-right mono-text">
+        <span>LAST_2 PROJECT BEFORE PROJECT27</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== INTERACTIVE TERMINAL JOIN MODAL ==================== -->
+  <div class="modal-backdrop" id="join-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-terminal-surface" role="document">
+      
+      <div class="terminal-bar">
+        <div class="terminal-controls">
+          <span class="t-btn t-close"></span>
+          <span class="t-btn t-min"></span>
+          <span class="t-btn t-max"></span>
+        </div>
+        <span class="terminal-title mono-text">PAKT_LAST_2.EXE // TERMINAL</span>
+        <button type="button" class="modal-close-pixel" id="close-modal-btn" aria-label="Zamknij okno">
+          ✕
+        </button>
+      </div>
+
+      <div class="terminal-body">
+        <h3 id="modal-title" class="modal-pixel-heading pixel-font">PRZYSTĄP DO „LAST_2”</h3>
+        <p class="modal-terminal-desc">
+          Zobowiązujesz się do 61 dni systematycznej pracy nad celami, bezwzględnej blokady social mediów na smartfonie (z 20-minutowym buforem desktopowym po 20:00) i budowania fundamentów pod PROJECT27.
+        </p>
+
+        <form id="pledge-form" class="terminal-form" onsubmit="return false;">
+          <div class="terminal-field">
+            <label for="pledge-name" class="mono-text">> IDENTYFIKATOR_UCZESTNIKA:</label>
+            <input type="text" id="pledge-name" class="pixel-input" placeholder="np. Wiktor K." required autocomplete="name">
+          </div>
+
+          <div class="terminal-field">
+            <label for="pledge-email" class="mono-text">> ADRES_EMAIL (RAPORTY_TYGODNIOWE):</label>
+            <input type="email" id="pledge-email" class="pixel-input" placeholder="twoj@adres.com" required autocomplete="email">
+          </div>
+
+          <div class="terminal-terms">
+            <label class="pixel-checkbox-wrap">
+              <input type="checkbox" id="pledge-agree" required checked>
+              <span class="pixel-check-box"></span>
+              <span class="mono-text">AKCEPTUJĘ KODEKS OSTATNIEJ PROSTEJ NA 61 DNI</span>
+            </label>
+          </div>
+
+          <div class="terminal-actions">
+            <button type="submit" class="btn-pixel-lime btn-full" id="confirm-pledge-btn">
+              <span class="btn-pixel-text">PODPISZ PAKT I ZABLOKUJ SZUM</span>
+              <span class="btn-pixel-arrow">↗</span>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="terminal-footer mono-text">
+        <span>STATUS: SYSTEM READY</span>
+        <span>•</span>
+        <span>SECURITY: VERIFIED</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Sonner-style Cyber Toast Container -->
+  <div class="toast-portal" id="toast-portal" aria-live="polite"></div>
+
+  <script>
+/**
+ * LAST_2 — Anty Social Media Challenge (Ostatnia Prosta 2026)
+ * Cyberpunk / Web3 / 8-Bit Neo-Brutalism
+ * Polish & Micro-interactions: Emil Kowalski Philosophy
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  // 1. TOP READING PROGRESS LINE (Acid Lime)
+  const scrollProgressBar = document.getElementById('scroll-progress-bar');
+  
+  const updateScrollProgress = () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    
+    if (docHeight > 0 && scrollProgressBar) {
+      const scrollFraction = Math.min(1, Math.max(0, scrollTop / docHeight));
+      scrollProgressBar.style.width = `${scrollFraction * 100}%`;
+    }
+  };
+
+  window.addEventListener('scroll', updateScrollProgress, { passive: true });
+  updateScrollProgress();
+
+  // 2. LIVE MISSION COUNTDOWN (NAV BAR)
+  const navCountdown = document.getElementById('nav-countdown');
+  const targetDate = new Date('2026-11-01T00:00:00');
+
+  const updateCountdown = () => {
+    if (!navCountdown) return;
+    const now = new Date();
+    const diff = targetDate.getTime() - now.getTime();
+
+    if (diff <= 0) {
+      navCountdown.textContent = 'STATUS: ROZPOCZĘTE // 61 DNI';
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / 1000 / 60) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    const pad = (n) => String(n).padStart(2, '0');
+    navCountdown.textContent = `START: ${days}D ${pad(hours)}H ${pad(minutes)}M ${pad(seconds)}S`;
+  };
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // 3. SCROLL REVEAL OBSERVER WITH INTERSECTION OBSERVER
+  const revealElements = document.querySelectorAll('.reveal-item');
+
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+          
+          // Trigger counter if the card itself or any child has data-counter
+          if (entry.target.hasAttribute('data-counter')) {
+            startCounterAnimation(entry.target);
+          }
+          entry.target.querySelectorAll('[data-counter]').forEach(subEl => {
+            startCounterAnimation(subEl);
+          });
+
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -30px 0px'
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+  } else {
+    revealElements.forEach(el => el.classList.add('is-revealed'));
+  }
+
+  // 4. ANIMATED COUNTER TICKER FUNCTION
+  function startCounterAnimation(card) {
+    if (card.dataset.hasAnimated === 'true') return;
+    card.dataset.hasAnimated = 'true';
+
+    const target = parseInt(card.getAttribute('data-counter'), 10);
+    const suffix = card.getAttribute('data-suffix') || '';
+    const display = card.querySelector('.counter-display');
+    if (!display) return;
+
+    if (target === 0) {
+      display.textContent = `0${suffix}`;
+      return;
+    }
+
+    const duration = 1200;
+    const startTime = performance.now();
+
+    function step(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // Emil Kowalski ease-out cubic
+      const easeProgress = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(target * easeProgress);
+
+      display.textContent = `${current}${suffix}`;
+
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        display.textContent = `${target}${suffix}`;
+      }
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  // 5. TERMINAL MODAL CONTROLS (scale 0.95 -> 1, never scale from 0)
+  const modal = document.getElementById('join-modal');
+  const openModalBtn = document.getElementById('open-join-btn');
+  const openNavBtn = document.getElementById('open-join-nav');
+  const finalJoinBtn = document.getElementById('final-join-btn');
+  const closeModalBtn = document.getElementById('close-modal-btn');
+  const pledgeForm = document.getElementById('pledge-form');
+  const nameInput = document.getElementById('pledge-name');
+
+  let lastActiveElement = null;
+
+  const openModal = (e) => {
+    if (e) e.preventDefault();
+    lastActiveElement = document.activeElement;
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+
+    setTimeout(() => {
+      if (nameInput) nameInput.focus();
+    }, 120);
+  };
+
+  const closeModal = () => {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (lastActiveElement) {
+      lastActiveElement.focus();
+    }
+  };
+
+  if (openModalBtn) openModalBtn.addEventListener('click', openModal);
+  if (openNavBtn) openNavBtn.addEventListener('click', openModal);
+  if (finalJoinBtn) finalJoinBtn.addEventListener('click', openModal);
+  if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+
+  // Close on Backdrop click
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  // Close on Escape key
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+      closeModal();
+    }
+  });
+
+  // 6. SONNER-STYLE TOAST SYSTEM (CYBER THEME)
+  const toastPortal = document.getElementById('toast-portal');
+
+  const showToast = (title, message) => {
+    const toast = document.createElement('div');
+    toast.className = 'sonner-toast';
+    toast.innerHTML = `
+      <span class="toast-dot" aria-hidden="true"></span>
+      <div class="toast-content">
+        <div class="toast-title">${title}</div>
+        <div class="toast-msg">${message}</div>
+      </div>
+    `;
+
+    toastPortal.appendChild(toast);
+
+    requestAnimationFrame(() => {
+      toast.classList.add('toast-enter-active');
+    });
+
+    setTimeout(() => {
+      toast.classList.remove('toast-enter-active');
+      toast.classList.add('toast-exit');
+      setTimeout(() => {
+        if (toast.parentNode) {
+          toast.parentNode.removeChild(toast);
+        }
+      }, 350);
+    }, 4500);
+  };
+
+  // 7. PLEDGE FORM SUBMISSION
+  if (pledgeForm) {
+    pledgeForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = nameInput.value.trim() || 'OPERATOR';
+      
+      closeModal();
+
+      setTimeout(() => {
+        showToast(
+          `[!] PAKT_ZATWIERDZONY // ${name.toUpperCase()}`,
+          'Dołączono do LAST_2. Protokół 61 dni startuje 1 listopada. Blokada social mediów na smartfonie aktywna.'
+        );
+      }, 180);
+
+      pledgeForm.reset();
+    });
+  }
+
+  // 8. SMOOTH ANCHOR NAVIGATION
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === '#join-modal') return;
+
+      const targetElem = document.querySelector(targetId);
+      if (targetElem) {
+        e.preventDefault();
+        targetElem.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+});
+
+</script>
+</body>
+</html>
